@@ -1,0 +1,400 @@
+{
+  "version": "1.5.0",
+  "type": "symbolGroups",
+  "symbolGroups": [
+    {
+      "name": "Basic",
+      "parent": null,
+      "symbols": [
+        {
+          "name": "B | REST | Auth admin",
+          "actions": [
+            {
+              "type": "setVariable",
+              "negated": false,
+              "ignoreFailure": false,
+              "disabled": false,
+              "errorOutput": null,
+              "name": "username",
+              "value": "admin"
+            },
+            {
+              "type": "setVariable",
+              "negated": false,
+              "ignoreFailure": false,
+              "disabled": false,
+              "errorOutput": null,
+              "name": "password",
+              "value": "admin"
+            }
+          ],
+          "successOutput": null,
+          "inputs": [],
+          "outputs": [
+            {
+              "type": "output",
+              "name": "password",
+              "parameterType": "STRING"
+            },
+            {
+              "type": "output",
+              "name": "username",
+              "parameterType": "STRING"
+            }
+          ]
+        },
+        {
+          "name": "B | REST | Create Quack",
+          "actions": [
+            {
+              "type": "rest_call",
+              "negated": false,
+              "ignoreFailure": false,
+              "disabled": false,
+              "errorOutput": null,
+              "method": "POST",
+              "url": "/quacksapp/api/qucks",
+              "data": "{\"author\":{\"id\":1},\"publiclyVisible\":false,\"text\":\"ich bin der Admin.\",\"title\":\"Admin is Quack\"}",
+              "cookies": {},
+              "headers": {},
+              "credentials": {
+                "name": "{{$password}}",
+                "password": "{{$password}}"
+              },
+              "timeout": 0
+            },
+            {
+              "type": "rest_checkStatus",
+              "negated": false,
+              "ignoreFailure": false,
+              "disabled": false,
+              "errorOutput": null,
+              "status": 200
+            }
+          ],
+          "successOutput": null,
+          "inputs": [
+            {
+              "type": "input",
+              "name": "password",
+              "parameterType": "STRING"
+            },
+            {
+              "type": "input",
+              "name": "username",
+              "parameterType": "STRING"
+            }
+          ],
+          "outputs": []
+        },
+        {
+          "name": "B | REST | Auth user",
+          "actions": [
+            {
+              "type": "setVariable",
+              "negated": false,
+              "ignoreFailure": false,
+              "disabled": false,
+              "errorOutput": null,
+              "name": "username",
+              "value": "user"
+            },
+            {
+              "type": "setVariable",
+              "negated": false,
+              "ignoreFailure": false,
+              "disabled": false,
+              "errorOutput": null,
+              "name": "password",
+              "value": "user"
+            }
+          ],
+          "successOutput": null,
+          "inputs": [],
+          "outputs": [
+            {
+              "type": "output",
+              "name": "password",
+              "parameterType": "STRING"
+            },
+            {
+              "type": "output",
+              "name": "username",
+              "parameterType": "STRING"
+            }
+          ]
+        },
+        {
+          "name": "B | REST | Logout",
+          "actions": [
+            {
+              "type": "setVariable",
+              "negated": false,
+              "ignoreFailure": false,
+              "disabled": false,
+              "errorOutput": null,
+              "name": "username",
+              "value": ""
+            },
+            {
+              "type": "setVariable",
+              "negated": false,
+              "ignoreFailure": false,
+              "disabled": false,
+              "errorOutput": null,
+              "name": "password",
+              "value": ""
+            }
+          ],
+          "successOutput": null,
+          "inputs": [],
+          "outputs": [
+            {
+              "type": "output",
+              "name": "password",
+              "parameterType": "STRING"
+            },
+            {
+              "type": "output",
+              "name": "username",
+              "parameterType": "STRING"
+            }
+          ]
+        },
+        {
+          "name": "B | Web | Auth admin",
+          "actions": [
+            {
+              "type": "web_fill",
+              "negated": false,
+              "ignoreFailure": false,
+              "disabled": false,
+              "errorOutput": null,
+              "node": {
+                "selector": "username",
+                "type": "CSS"
+              },
+              "value": "admin"
+            },
+            {
+              "type": "web_fill",
+              "negated": false,
+              "ignoreFailure": false,
+              "disabled": false,
+              "errorOutput": null,
+              "node": {
+                "selector": "password",
+                "type": "CSS"
+              },
+              "value": "admin"
+            },
+            {
+              "type": "web_click",
+              "negated": false,
+              "ignoreFailure": false,
+              "disabled": false,
+              "errorOutput": null,
+              "node": {
+                "selector": "login",
+                "type": "CSS"
+              },
+              "doubleClick": false
+            },
+            {
+              "type": "web_waitForNode",
+              "negated": false,
+              "ignoreFailure": false,
+              "disabled": false,
+              "errorOutput": null,
+              "waitCriterion": "CLICKABLE",
+              "node": {
+                "selector": "login",
+                "type": "CSS"
+              },
+              "maxWaitTime": 2
+            }
+          ],
+          "successOutput": null,
+          "inputs": [],
+          "outputs": []
+        },
+        {
+          "name": "B | Web | Auth user",
+          "actions": [
+            {
+              "type": "web_fill",
+              "negated": false,
+              "ignoreFailure": false,
+              "disabled": false,
+              "errorOutput": null,
+              "node": {
+                "selector": "username",
+                "type": "CSS"
+              },
+              "value": "test"
+            },
+            {
+              "type": "web_fill",
+              "negated": false,
+              "ignoreFailure": false,
+              "disabled": false,
+              "errorOutput": null,
+              "node": {
+                "selector": "password",
+                "type": "CSS"
+              },
+              "value": "12345"
+            },
+            {
+              "type": "web_click",
+              "negated": false,
+              "ignoreFailure": false,
+              "disabled": false,
+              "errorOutput": null,
+              "node": {
+                "selector": "login",
+                "type": "CSS"
+              },
+              "doubleClick": false
+            },
+            {
+              "type": "web_waitForNode",
+              "negated": false,
+              "ignoreFailure": false,
+              "disabled": false,
+              "errorOutput": null,
+              "waitCriterion": "CLICKABLE",
+              "node": {
+                "selector": "login",
+                "type": "CSS"
+              },
+              "maxWaitTime": 2
+            }
+          ],
+          "successOutput": null,
+          "inputs": [],
+          "outputs": []
+        },
+        {
+          "name": "B | Web | Logout",
+          "actions": [
+            {
+              "type": "web_click",
+              "negated": false,
+              "ignoreFailure": false,
+              "disabled": false,
+              "errorOutput": null,
+              "node": {
+                "selector": "logout",
+                "type": "CSS"
+              },
+              "doubleClick": false
+            },
+            {
+              "type": "web_waitForNode",
+              "negated": false,
+              "ignoreFailure": false,
+              "disabled": false,
+              "errorOutput": null,
+              "waitCriterion": "CLICKABLE",
+              "node": {
+                "selector": "username",
+                "type": "CSS"
+              },
+              "maxWaitTime": 10
+            }
+          ],
+          "successOutput": null,
+          "inputs": [],
+          "outputs": []
+        },
+        {
+          "name": "B | Web | Create Quack",
+          "actions": [
+            {
+              "type": "web_fill",
+              "negated": false,
+              "ignoreFailure": false,
+              "disabled": false,
+              "errorOutput": null,
+              "node": {
+                "selector": "quack-title",
+                "type": "CSS"
+              },
+              "value": "test"
+            },
+            {
+              "type": "web_fill",
+              "negated": false,
+              "ignoreFailure": false,
+              "disabled": false,
+              "errorOutput": null,
+              "node": {
+                "selector": "quack-text",
+                "type": "CSS"
+              },
+              "value": "test"
+            },
+            {
+              "type": "web_click",
+              "negated": false,
+              "ignoreFailure": false,
+              "disabled": false,
+              "errorOutput": null,
+              "node": {
+                "selector": "quack-submit",
+                "type": "CSS"
+              },
+              "doubleClick": false
+            }
+          ],
+          "successOutput": null,
+          "inputs": [],
+          "outputs": []
+        }
+      ],
+      "groups": []
+    },
+    {
+      "name": "Default group",
+      "parent": null,
+      "symbols": [
+        {
+          "name": "Reset",
+          "actions": [
+            {
+              "type": "web_goto",
+              "negated": false,
+              "ignoreFailure": false,
+              "disabled": false,
+              "errorOutput": null,
+              "url": "/",
+              "credentials": {
+                "name": "",
+                "password": ""
+              }
+            },
+            {
+              "type": "web_waitForText",
+              "negated": false,
+              "ignoreFailure": false,
+              "disabled": false,
+              "errorOutput": null,
+              "node": {
+                "selector": "body",
+                "type": "CSS"
+              },
+              "value": "Quack App",
+              "regexp": false,
+              "maxWaitTime": 10
+            }
+          ],
+          "successOutput": null,
+          "inputs": [],
+          "outputs": []
+        }
+      ],
+      "groups": []
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+<div class="row mb-5">
+  <div class="card-columns">
+    <ng-container *ngFor="let quack of quacks">
+      <div class="card {{quack.bg}} text-white text-center p-3" (click)="open(quack)">
+        <blockquote class="blockquote mb-0 card-body">
+          <p>{{quack.text}}</p>
+          <footer class="blockquote-footer text-white">
+            <small>
+              von <cite title="Source Title">{{quack.author.username}}</cite>
+            </small>
+          </footer>
+        </blockquote>
+      </div>
+    </ng-container>
+  </div>
+</div>

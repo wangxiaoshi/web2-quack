@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
+
+/** Color Scheme */
+.mountbatten-pink{
+  background-color: #977390;
+}
+.dark-lavender{
+  background-color: #785589;
+}
+.smoky-black{
+  background-color: #0D160B;
+}
+.bournished-brown{
+  background-color: #AC7B7D;
+}
+.rosy-brown{
+  background-color: #BB8A89;
+}

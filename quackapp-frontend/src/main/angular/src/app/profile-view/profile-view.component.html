@@ -1,0 +1,55 @@
+<div *ngIf="profile !== undefined" class="mx-auto">
+    <div class="col-sm-9 float-left">
+        <h2>
+            {{ profile.username }}
+            <small class="text-muted">#{{ profile.userId }}</small>
+        </h2>
+        <h4 class="text-info">{{ profile.role }}</h4>
+
+        <div class="col-md-4">
+            <button class="btn-block btn-warning" *ngIf="editable" [routerLink]="['/profile/edit']" [queryParams]="{id: profile.userId}">
+                Profil bearbeiten
+            </button>
+        </div>
+
+        <br>
+
+        <dl class="row">
+            <dt *ngIf="profile.realName !== undefined" class="col-sm-3">Echter Name:</dt>
+            <dd *ngIf="profile.realName !== undefined" class="col-sm-9">{{ profile.realName }}</dd>
+
+            <dt *ngIf="profile.gender !== undefined" class="col-sm-3">Geschlecht:</dt>
+            <dd *ngIf="profile.gender !== undefined" class="col-sm-9">{{ profile.gender }}</dd>
+
+            <dt *ngIf="profile.birthday !== undefined" class="col-sm-3">Geburtsdatum:</dt>
+            <dd *ngIf="profile.birthday !== undefined"
+                class="col-sm-9">{{ profile.birthday.toLocaleDateString('de-DE', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            }) }}</dd>
+
+
+            <dt class="col-sm-3">Mitglied seit:</dt>
+            <dd class="col-sm-9">{{ profile.creationDate.toLocaleDateString('de-DE', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            }) }}</dd>
+
+            <dt class="col-sm-3">Zuletzt aktiv:</dt>
+            <dd *ngIf="profile.lastActiveDate !== undefined"
+                class="col-sm-9">{{ profile.lastActiveDate.toLocaleDateString('de-DE', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            }) }}</dd>
+            <dd *ngIf="profile.lastActiveDate === undefined" class="col-sm-9">Niemals</dd>
+        </dl>
+    </div>
+    <img src="{{ profile.pictureUrl }}" alt="Profile picture" class="img-thumbnail float-right">
+</div>
+
+<div *ngIf="profile === undefined" class="mx-auto">
+    <h2>Profil nicht gefunden :(</h2>
+</div>

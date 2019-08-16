@@ -1,0 +1,33 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{title}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-7">
+      <div class="col-12 quack-info">
+        <span>
+            Geschrieben am: <strong> {{date.toLocaleDateString('de-DE', {day: '2-digit', month: '2-digit', year: 'numeric'})}}</strong><br>
+            Von: <a routerLink="/profile" [queryParams]="{id: author.id}" (click)="activeModal.dismiss()"><strong>{{author.username}}</strong></a>
+        </span>
+      </div>
+      <div class="col-12">
+        {{text}}
+      </div>
+    </div>
+
+    <div class="col-5">
+      <h5 class="quack-comments-header">{{comments.length}} Kommentare</h5>
+
+      <form role="form" *ngIf="userLogged" (submit)="saveComment($event)">
+        <div class="form-group">
+          <label for="inputNewComment">Dein Kommentar:</label><input type="text" class="form-control" id="inputNewComment" name="inputNewComment"  [(ngModel)]="newComment"/>        </div>
+        <button type="submit" class="btn btn-primary" align="right">Abschicken</button>
+      </form>
+
+      <app-comments [comments]="comments"></app-comments>
+    </div>
+  </div>
+</div>

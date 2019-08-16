@@ -1,0 +1,53 @@
+<div class="row clearfix">
+    <div class="col-md-4 column">
+    </div>
+    <div class="col-md-4 column">
+        <a href="#" routerLink="/login">Bereits registriert? Anmelden!</a>
+
+        <div class="alert alert-warning" *ngIf="errorMessage != null">
+            {{errorMessage}}
+        </div>
+
+        <form role="form" (submit)="signUp($event)">
+            <div class="form-group">
+                <label for="inputUserNickname">Benutzername</label>
+                <input class="form-control" id="inputUserNickname" name="inputUsername" type="text" required [(ngModel)]="username" placeholder="Wähle einen Benutzernamen">
+            </div>
+
+            <div class="form-group">
+                <label for="inputUserEmail">E-Mailadresse</label>
+                <input class="form-control" id="inputUserEmail"  name="inputEmail" type="email" required [(ngModel)]="email" placeholder="du@mail.xy"/>
+            </div>
+
+            <div class="form-group">
+                <label for="inputUserPassword">Passwort</label>
+                <input class="form-control" id="inputUserPassword"  name="inputPassword" type="password" required [(ngModel)]="password" placeholder="Passwort eingeben"/>
+            </div>
+
+            <div class="form-group">
+                <label for="inputRePassword">Passwort wiederholen</label>
+                <input class="form-control" id="inputRePassword"  name="inputPasswordRepeat" type="password" required [(ngModel)]="passwordRepeat" placeholder="Passwort nochmal eingeben"/>
+            </div>
+
+<!--            <div class="form-group">-->
+<!--                <label for="inputUserGender">Geschlecht</label>-->
+<!--                &nbsp; &nbsp;<input type="radio" name="inputUserGender" id="gender_m" value="male"-->
+<!--                                    checked="checked"> &nbsp;Male &nbsp; &nbsp; &nbsp; &nbsp;-->
+<!--                &nbsp; &nbsp;<input type="radio" name="inputUserGender" id="gender_f" value="female">-->
+<!--                &nbsp;Female-->
+<!--            </div>-->
+
+<!--            <div class="checkbox">-->
+<!--                <label><input type="checkbox"/> &nbsp;I agree to the Terms and Conditions</label>-->
+<!--            </div>-->
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-warning btn-lg btn-block">Registrieren</button>
+            </div>
+
+
+        </form>
+    </div>
+    <!--<div class="col-md-4 column">
+    </div>-->
+</div>

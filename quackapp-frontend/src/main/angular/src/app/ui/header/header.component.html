@@ -1,0 +1,28 @@
+<div class="container-fluid p-0">
+  <nav class="navbar navbar-dark bg-dark mb-5">
+    <a class="navbar-brand" href="/"><img src="assets/img/Ente3.png" alt="" width="50" height="50"></a>
+    <div class="navbar-expand mr-auto">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLinkActive="active" routerLink="/home"><i class="fa fa-home"></i> Startseite</a>
+        <a class="nav-item nav-link" routerLinkActive="active" routerLink="/profile"><i class="fa fa-male"></i> Profil</a>
+        <a class="nav-item nav-link" routerLinkActive="active" routerLink="/admin-panel"><i class="fa fa-tachometer"></i> Admin-Dashboard</a>
+      </div>
+    </div>
+    <div class="navbar-expand ml-auto navbar-nav">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/post">
+          <i class="fa fa-paper-plane"></i> Quacken
+        </a>
+        <a class="nav-item nav-link" href="https://bitbucket.org/tu_webtech2/webtech2-blog/" target="_blank">
+          <i class="fa fa-bitbucket"></i> Repository
+        </a>
+        <a class="nav-item nav-link" routerLink="/login" *ngIf="!isUserLoggedIn()">
+          <i class="fa fa-sign-in"></i> Einloggen
+        </a>
+          <a class="nav-item nav-link" href (click)="userLogout()" *ngIf="isUserLoggedIn()">
+              <i class="fa fa-sign-out"></i> Ausloggen
+          </a>
+      </div>
+    </div>
+  </nav>
+</div>

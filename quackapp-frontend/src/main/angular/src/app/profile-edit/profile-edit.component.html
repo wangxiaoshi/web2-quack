@@ -1,0 +1,51 @@
+<div class="mx-auto">
+    <div class="col-sm-9 float-left">
+        <form role="form" (submit)="saveProfile($event)">
+            <div class="alert alert-success" *ngIf="success">
+                Profil gespeichert!
+            </div>
+            <div class="alert alert-warning" *ngIf="errorMessage != null">
+                {{errorMessage}}
+            </div>
+
+            <div class="form-group">
+                <label for="inputUsername">Benutzername</label>
+                <input class="form-control" id="inputUsername" name="inputUsername" type="text" required [(ngModel)]="newUsername" placeholder="{{user.username}}"/>
+            </div>
+
+            <div class="form-group">
+                <label for="inputRealName">Echter Name</label>
+                <input class="form-control" id="inputRealName" name="inputRealName" type="text" [(ngModel)]="newRealName" placeholder="{{user.realName}}"/>
+            </div>
+
+            <div class="form-group">
+                <label for="inputUserEmail">E-Mailadresse</label>
+                <input class="form-control" id="inputUserEmail"  name="inputEmail" type="email" required [(ngModel)]="newEmail" placeholder="{{user.email}}"/>
+            </div>
+
+            <div class="form-group">
+                <label for="inputUserPassword">Passwort</label>
+                <input class="form-control" id="inputUserPassword"  name="inputPassword" type="password" required [(ngModel)]="newPassword" placeholder="(Frei lassen, wenn kein neues Passwort gesetzt werden soll)"/>
+            </div>
+
+            <div class="form-group">
+                <label for="inputPasswordRepeat">Passwort wiederholen</label>
+                <input class="form-control" id="inputPasswordRepeat"  name="inputPasswordRepeat" type="password" required [(ngModel)]="newPasswordRepeat" placeholder="(Frei lassen, wenn kein neues Passwort gesetzt werden soll)"/>
+            </div>
+
+            <div class="form-group">
+                <div class="btn-group-lg">
+                    <button type="button" class="btn btn-secondary btn-block" routerLink="/profile" [queryParams]="{id: user.id}">Zurück zum Profil</button>
+                    <button type="submit" class="btn btn-primary btn-block">Speichern</button>
+                    <button type="button" class="btn btn-danger btn-block" routerLink="/home" (click)="deleteProfile()">Benutzer löschen</button>
+                </div>
+            </div>
+
+        </form>
+
+        <br>
+        <br>
+        <br>
+    </div>
+    <img src="{{ profile.pictureUrl }}" alt="Profile picture" class="img-thumbnail float-right">
+</div>

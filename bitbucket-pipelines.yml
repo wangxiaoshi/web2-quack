@@ -1,0 +1,26 @@
+pipelines:
+  default:
+    - step:
+        name: Install using JDK 8
+        image: maven:3.6.1-jdk-8
+        caches:
+          - maven
+        script:
+          - mvn -B clean
+          - mvn -B validate
+          - curl -sL https://deb.nodesource.com/setup_10.x | bash -
+          - apt-get install -y nodejs
+          - npm install -g @angular/cli
+          - mvn -B install
+    - step:
+        name: Install using JDK 11
+        image: maven:3.6.1-jdk-11
+        caches:
+          - maven
+        script:
+          - mvn -B clean
+          - mvn -B validate
+          - curl -sL https://deb.nodesource.com/setup_10.x | bash -
+          - apt-get install -y nodejs
+          - npm install -g @angular/cli
+          - mvn -B install

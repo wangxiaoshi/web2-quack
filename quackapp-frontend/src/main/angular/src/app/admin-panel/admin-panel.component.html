@@ -1,0 +1,91 @@
+<div class="row">
+  <div class="col-md-6 column">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          Registrierte Benutzer
+        </h3>
+      </div>
+      <div class="panel-body">
+          <table class="table table-condensed table-hover">
+              <thead>
+                <tr>
+                  <th>
+                    ID
+                  </th>
+                  <th>
+                    Benutzername
+                  </th>
+                  <th>
+                    Registrierung
+                  </th>
+                  <th>
+                    Letzter Login
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let profile of userProfiles">
+                  <td><a routerLink="/profile" [queryParams]="{id: profile.userId}">{{profile.userId}}</a></td>
+                  <td>{{profile.username}}</td>
+                  <td>{{profile.creationDate.toLocaleDateString('de-DE', {day: '2-digit', month: '2-digit', year: 'numeric'})}}</td>
+                  <td *ngIf="profile.lastActiveDate !== undefined">{{profile.lastActiveDate.toLocaleDateString('de-DE', {day: '2-digit', month: '2-digit', year: 'numeric'})}}</td>
+                  <td *ngIf="profile.lastActiveDate === undefined">Niemals</td>
+                </tr>
+              </tbody>
+            </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 column">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          Gepostete Quacks
+        </h3>
+      </div>
+      <div class="panel-body">
+          <table class="table table-condensed table-hover">
+              <thead>
+                <tr>
+                  <th>
+                    ID
+                  </th>
+                  <th>
+                    Autor
+                  </th>
+                  <th>
+                    Titel
+                  </th>
+                  <th>
+                    Zeitpunkt
+                  </th>
+                  <th>
+                    Sichtbarkeit
+                  </th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let quack of quacks">
+                  <td>{{quack.id}}</td>
+                  <td>
+                      {{quack.author.username}}<br>
+                      <small class="text-muted">#{{quack.author.id}}</small></td>
+                  <td>{{quack.title}}</td>
+                  <td>{{quack.date.toLocaleDateString('de-DE', {day: '2-digit', month: '2-digit', year: 'numeric'})}}</td>
+                  <td *ngIf="quack.publiclyVisible">öffentlich</td>
+                  <td *ngIf="!quack.publiclyVisible">beschränkt</td>
+                  <td>
+                    <a [routerLink]="['/edit-quack',quack.id]"><i class="fa fa-edit"></i></a>
+                    <a [routerLink]="['/delete-quack',quack.id]"><i class="fa fa-trash"></i></a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div style="height:150px;"></div>

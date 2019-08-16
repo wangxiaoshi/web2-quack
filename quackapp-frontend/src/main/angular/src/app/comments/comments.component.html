@@ -1,0 +1,13 @@
+<div class="row user-comment" *ngFor="let comment of comments">
+    <div class="user-avatar col-3">
+      <img src="assets/img/user.png" alt="user avatar">
+    </div>
+
+    <div class="user-comment-infos">
+      <small>geschrieben am: <strong>{{comment.date.toLocaleDateString('de-DE', {day: '2-digit', month: '2-digit', year: 'numeric'})}}</strong> von <strong>{{comment.author.username}}</strong></small>
+    </div>
+
+    <div class="user-comment-content col-12">
+      <small class="user-comment-text">{{comment.text}}</small>
+    </div>
+</div>

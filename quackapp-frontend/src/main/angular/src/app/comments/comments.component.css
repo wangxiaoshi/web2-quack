@@ -1,0 +1,20 @@
+.user-avatar{
+  margin-bottom: 10px;
+}
+.user-avatar img{
+  max-width: 100%;
+}
+
+.user-comment{
+  margin-bottom: 10px;
+}
+
+.user-comment-infos{
+  padding-top: 10px;
+}
+
+.user-comment-content{
+  padding: 10px 5px;
+  background-color: #eee;
+  border: 1px solid #ddd;
+}
